@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="UTF-8"/>
+	<title>Dose Diária: Seu Lembrete</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<style>
+
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		body{
+			font-family: Arial, Helvetica, sans-serif;
+			background-color: #A7727D;
+			color: black
+		}
+
+		.img_logo_header{
+			width: 10px;
+		}
+
+		.header,
+		.navigation_header{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.header{
+			background-color: #A7727D;
+			box-shadow: 1px 1px 4px #A75D5D;
+			height: 3.5em;
+			justify-content: space-between;
+			padding: 0 4%;
+		}
+
+		.navigation_header{
+			gap: 3em;
+		}
+
+		.navigation_header a{
+			text-decoration: none;
+			color: black;
+			transition: 1s;
+			font-weight: bold;
+		}
+
+		.active{
+			background-color: #B88E97;
+			padding: 10px;
+			border-radius: 10px;
+		}
+		
+		.content{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			text-align: center; 
+			padding-top: 1rem;
+			transition: 1s;
+		}
+
+		.content > img{
+			align-items: center;
+		}
+
+		.btn_icon_header{
+			background-color: transparent ;
+			border: none;
+			color: black;
+			cursor: pointer;
+			display: none;
+		}
+		
+		@media screen and (max-width: 768px) {
+            .btn_icon_header{
+                display: block;
+            }
+            .navigation_header{
+                position: absolute;
+				flex-direction: column;
+				top: 0;
+				background-color: #B88E97;
+				height: 100%;
+				width: 35vw;
+				padding: 1em;
+				animation-duration: 1s;
+				margin-left: -100vw;
+            }
+			@keyframes showSidebar {
+				from{margin-left: -100vw;}
+				top{margin-left: -10vw}
+			}
+        }
+        @keyframes showSidebar {
+            from {margin-left: -100vw;}
+            to {margin-left: -10vw;}
+        }
+
+
+
+	</style>
+</head>
+	
+<body id="body">
+	<div class="header" id="header">
+		<button onclick="toggleSidebar()" class="btn_icon_header">
+			<svg xmls="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 15 15">
+				<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1.5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+			</svg>
+		</button>
+		<div class="logo_header">
+			<img src="img/DOSE_DIÁRIAremove.png" alt="Logo Dose Diária" style="width: 100px; height: 100px;">
+		</div>
+		<div class="navigation_header" id="navigation">	
+			<button onclick="toggleSidebar()" class="btn_icon_header">
+				<svg xmls="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-x" viewBox="0 0 15 15">
+					<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+				</svg>
+
+			</button>
+				<a href="#" class="active">Home</a>
+				<a href="#">Meus Lembretes</a>
+				<a href="#">Perfil</a>
+		</div> 
+	</div>
+
+	<div class="content" id="content">
+		<h1>Dose diária</h1>
+		<div>
+			<img class="foto-user" src="img/team.png" style="width: 200px; height: 200px;"/>
+		</div>
+	</div>
+
+	<form> 
+		<strong>
+		<label for="medicamento">Medicamento:</label>
+		</strong>
+		<input type="text" id="medicamento" name="medicamento">
+
+
+	<strong>
+		<label for="dosagem">Dosagem:</label>
+	</strong>
+
+		<input type="text" id="dosagem" name="dosagem">
+		<strong>
+		<label for="frequencia">Frequência:</label>
+		</strong>
+		<select id="frequencia" name="frequencia">
+			<option value="1">1 vez ao dia</option>
+			<option value="2">2 vezes ao dia</option>
+			<option value="3">3 vezes ao dia</option>
+			<option value="4">4 vezes ao dia</option>
+		</select>
+		<strong>
+		<label for="horario">Horário:</label>
+		</strong>
+		<input type="time" id="horario" name="horario"> <br>
+		<button type="button" onclick="adicionarLembrete()">Adicionar lembrete</button>
+	</form>
+	<div id="lembretes">
+		<h2>Meus Lembretes</h2>
+	</div>
+	<script src="index.js"></script>
+</body>
+
+<script>
+	var header = document.getElementById ('header');
+	var navigationHeader =  document.getElementById ('navigation');
+	var content = document.getElementById ('content');
+	var showSidebar =  false;
+
+	function toggleSidebar()
+	{
+		showSidebar = !showSidebar;
+		if(showSidebar)
+		{
+			navigationHeader.style.marginLeft = '-10vw';
+			navigationHeader.style.animationName= 'showSidebar';
+		}
+		else
+		{
+			navigationHeader.style.marginLeft = '-100vw';
+			navigationHeader.style.animationName= '';
+		}
+	}
+</script>
+</html>

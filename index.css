@@ -1,0 +1,70 @@
+body {
+	background-color: rgb(234,199,199);
+	background: linear-gradient(90deg, rgba(234,199,199,1) 0%, rgba(247,245,235,1) 35%, rgba(255,202,200,1) 100%);
+	font-family: Arial, sans-serif;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+
+}
+
+h1, h2 {
+	text-align: center;
+}
+
+input {
+	width: 200px;
+	height: 25px;
+	border-radius: 10px;
+}
+
+select{
+	width: 200px;
+	height: 35px;
+	border-radius: 8px;
+	border: 1.5px solid black;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+form > * {
+	margin: 10px 0;
+}
+
+button {
+	align-self: center;
+	background-color: #834250; /* ROSA */
+	border-radius: 8px;
+	color: white;
+	padding: 12px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	margin-bottom: 12px;
+}
+
+.lembrete {
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px;
+}
+
+.lembrete > * {
+	margin: 5px 0;
+}
+
+.lembrete > button {
+	align-self: center;
+}
