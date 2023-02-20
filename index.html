@@ -38,6 +38,7 @@
 
 		.navigation_header{
 			gap: 3em;
+			z-index: 2;
 		}
 
 		.navigation_header a{
@@ -121,13 +122,13 @@
 				</svg>
 
 			</button>
-				<a href="#" class="active">Home</a>
-				<a href="#">Meus Lembretes</a>
+				<a href="file:///C:/Users/jamil/Desktop/daniel/index.html#" class="active">Home</a>
+				<a href="file:///C:/Users/jamil/Desktop/daniel/index.html#">Meus Lembretes</a>
 				<a href="#">Perfil</a>
 		</div> 
 	</div>
 
-	<div class="content" id="content">
+	<div tabindex="0" onclick="closeSidebar"() class="content" id="content">
 		<h1>Dose diária</h1>
 		<div>
 			<img class="foto-user" src="img/team.png" style="width: 200px; height: 200px;"/>
@@ -187,5 +188,21 @@
 			navigationHeader.style.animationName= '';
 		}
 	}
+
+	function closeSidebar()
+	{
+		if(showSidebar)
+		{
+			showSidebar = true;
+			toggleSidebar();
+		}
+	}
+ window.addEventListener('resize', function(event) {
+        if(window.innerWidth > 768 && showSidebar) 
+        {  
+            showSidebar = true;
+            toggleSidebar();
+        }
+    });
 </script>
 </html>
